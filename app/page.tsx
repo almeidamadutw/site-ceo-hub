@@ -309,7 +309,7 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="https://wa.me/5500000000000"
+              href="https://wa.me/5515988401441"
               className="inline-flex w-full items-center justify-center rounded-full bg-[#E5E7EB] px-8 py-4 text-sm font-black text-[#050A18] shadow-xl shadow-black/25 transition hover:bg-white sm:w-auto"
             >
               Quero conhecer a mentoria
