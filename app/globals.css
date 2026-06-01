@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ceo-navy: #07111f;
+  --ceo-blue: #0f2a44;
+  --ceo-blue-soft: #173b5c;
+  --ceo-silver: #d8dde6;
+  --ceo-silver-soft: #f3f6fa;
+  --ceo-white: #ffffff;
+  --ceo-text: #07111f;
+  --ceo-muted: #64748b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ceo-white);
+  color: var(--ceo-text);
+}
+
+::selection {
+  background: var(--ceo-blue);
+  color: white;
+}
+
+/* CEO Club - densidade visual compacta */
+html {
+  font-size: 14px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.ceo-site-shell {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.ceo-site-container {
+  width: min(100% - 2rem, 1440px);
+  margin-inline: auto;
+}
+
+.ceo-site-hero {
+  min-height: calc(100vh - 86px);
+  padding: 2rem 0;
+}
+
+.ceo-site-title {
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.ceo-site-text {
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.ceo-site-card {
+  border-radius: 2rem;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 13px;
+  }
+
+  .ceo-site-hero {
+    min-height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .ceo-site-title {
+    font-size: clamp(2.6rem, 11vw, 4.5rem);
+  }
 }
