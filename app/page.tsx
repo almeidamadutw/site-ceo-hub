@@ -1,50 +1,57 @@
+import Image from "next/image";
 import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Footer } from "@/components/Footer";
 
-const logoSrc = "/images/logo.jpeg";
-
-const highlights = [
-  "Venda consultiva",
-  "Avaliação estratégica",
-  "Experiência do paciente",
-  "Gestão e processos",
+const pillars = [
+  {
+    title: "Venda consultiva",
+    text: "Aprenda a conduzir conversas, apresentar soluções com mais clareza e fazer o paciente perceber valor antes de pensar apenas em preço.",
+  },
+  {
+    title: "Avaliação estratégica",
+    text: "Transforme a avaliação em uma experiência de confiança, diagnóstico, orientação e direcionamento para o melhor plano de cuidado.",
+  },
+  {
+    title: "Agendamento inteligente",
+    text: "Organize a agenda com mais intenção, reduza faltas, melhore confirmações e conduza o paciente desde o primeiro contato.",
+  },
+  {
+    title: "Experiência do paciente",
+    text: "Crie uma jornada mais acolhedora, profissional e memorável, do WhatsApp ao pós-atendimento.",
+  },
+  {
+    title: "Gestão de equipe",
+    text: "Desenvolva liderança, alinhamento, comunicação e rotina para que a equipe trabalhe com mais clareza, padrão e propósito.",
+  },
+  {
+    title: "Processos e crescimento",
+    text: "Estruture a clínica com método, indicadores, organização e decisões mais estratégicas para crescer com previsibilidade.",
+  },
 ];
 
-const areas = [
-  {
-    titulo: "Venda, avaliação e conversão",
-    texto: "Você aprende a conduzir conversas, avaliações e planos de tratamento com mais clareza, segurança e estratégia.",
-  },
-  {
-    titulo: "Agenda e experiência do paciente",
-    texto: "Você organiza a jornada do paciente desde o primeiro contato até o pós-consulta, reduzindo ruídos e aumentando percepção de valor.",
-  },
-  {
-    titulo: "Gestão, equipe e rotina",
-    texto: "Você estrutura processos, reuniões, indicadores e uma rotina de dono para liderar a clínica com mais previsibilidade.",
-  },
-];
-
-function LogoBox({ tamanho = "md" }: { tamanho?: "sm" | "md" | "lg" }) {
-  const classes = {
-    sm: "h-10 w-10 rounded-2xl",
-    md: "h-12 w-12 rounded-[18px]",
-    lg: "h-14 w-14 rounded-[20px]",
-  };
-
-  const imageClasses = {
-    sm: "rounded-xl",
-    md: "rounded-[14px]",
-    lg: "rounded-2xl",
-  };
-
+function DraImageCard({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
   return (
     <div
-      className={`flex shrink-0 items-center justify-center overflow-hidden bg-[#050A18] p-1 shadow-[0_0_28px_rgba(45,95,220,0.35)] ring-1 ring-white/10 ${classes[tamanho]}`}
+      className={`relative flex min-h-[620px] items-end justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] px-6 pt-12 ${className}`}
     >
-      <img
-        src={logoSrc}
-        alt="Logo CEO Club"
-        className={`h-full w-full object-cover ${imageClasses[tamanho]}`}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#ffffff14_0%,transparent_45%)]" />
+
+      <Image
+        src={src}
+        alt={alt}
+        width={720}
+        height={1000}
+        className="relative z-10 h-auto w-auto max-h-[560px] max-w-[92%] object-contain object-bottom md:max-h-[590px]"
       />
     </div>
   );
@@ -52,304 +59,178 @@ function LogoBox({ tamanho = "md" }: { tamanho?: "sm" | "md" | "lg" }) {
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#050A18] text-white">
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050A18]/90 backdrop-blur-xl">
-  <div className="relative mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-8">
-    <Link href="/" className="flex min-w-0 items-center gap-3">
-      <LogoBox tamanho="sm" />
+    <main className="min-h-screen bg-[#07111f] text-white">
+      <Header />
+      <Hero />
 
-      <div className="min-w-0">
-        <h1 className="truncate text-lg font-black tracking-tight text-white sm:text-xl">
-          CEO Club Mentoria
-        </h1>
-
-        <p className="hidden text-[11px] font-semibold text-[#D8DDE6] sm:block">
-          Dentistas liderando clínicas como empresas.
-        </p>
-      </div>
-    </Link>
-
-    <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-black text-[#D8DDE6] lg:flex">
-      <a href="#sobre" className="transition hover:text-white">
-        Sobre
-      </a>
-
-      <a href="#contato" className="transition hover:text-white">
-        Contato
-      </a>
-    </nav>
-
-    <a
-      href="https://ceoclubmentoria.com.br/login"
-      className="rounded-full bg-[#E5E7EB] px-5 py-2.5 text-xs font-black text-[#050A18] shadow-[0_14px_35px_rgba(0,0,0,0.24)] transition hover:bg-white sm:text-sm"
-    >
-      Área do Aluno
-    </a>
-  </div>
-</header>
-
-    <section className="relative flex min-h-[calc(100vh-20px)] items-center overflow-hidden px-4 pb-10 pt-[92px] sm:px-6 lg:px-8">
-  <div className="pointer-events-none absolute left-[-18rem] top-[-14rem] h-[40rem] w-[40rem] rounded-full bg-[#173B8F]/35 blur-3xl" />
-  <div className="pointer-events-none absolute bottom-[-18rem] right-[-14rem] h-[38rem] w-[38rem] rounded-full bg-[#E5E7EB]/10 blur-3xl" />
-  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#081326] to-transparent" />
-
-  <div className="relative mx-auto grid w-full max-w-[1380px] items-center gap-10 lg:grid-cols-[minmax(0,0.96fr)_minmax(390px,0.82fr)] xl:gap-14">
-    <div className="min-w-0">
-      <span className="inline-flex max-w-full rounded-full border border-[#D8DDE6]/25 bg-white/5 px-5 py-2 text-xs font-black text-[#D8DDE6] shadow-[inset_0_0_25px_rgba(255,255,255,0.03)] backdrop-blur sm:text-sm">
-        Mentoria para donos de clínicas odontológicas
-      </span>
-
-      <h2 className="mt-7 max-w-5xl break-words text-[clamp(3rem,5.5vw,5.8rem)] font-black leading-[0.94] tracking-[-0.07em] text-white">
-        Transformando dentistas em CEOs da própria clínica.
-      </h2>
-
-      <p className="mt-6 max-w-3xl break-words text-base font-medium leading-8 text-[#D8DDE6] lg:text-lg">
-        O CEO Club foi criado para você vender melhor, liderar com mais
-        segurança, organizar processos e construir uma clínica mais lucrativa,
-        previsível e preparada para crescer.
-      </p>
-
-      <div className="mt-8 flex flex-wrap gap-3">
-        <a
-          href="#contato"
-          className="rounded-full bg-[#E5E7EB] px-7 py-3 text-sm font-black text-[#050A18] shadow-2xl shadow-black/30 transition hover:bg-white"
-        >
-          Quero conhecer a mentoria
-        </a>
-
-        <a
-          href="https://ceoclubmentoria.com.br/login"
-          className="rounded-full border border-[#D8DDE6]/35 px-7 py-3 text-sm font-black text-white transition hover:bg-white hover:text-[#050A18]"
-        >
-          Já sou aluno
-        </a>
-      </div>
-
-      <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-2">
-        {highlights.map((item) => (
-          <div
-            key={item}
-            className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-bold text-[#D8DDE6] shadow-[inset_0_0_18px_rgba(255,255,255,0.03)] transition hover:bg-white/[0.08]"
-          >
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E5E7EB] text-xs font-black text-[#050A18]">
-              ✓
-            </span>
-            <span>{item}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <div className="relative min-w-0 lg:justify-self-end">
-      <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-[radial-gradient(circle_at_50%_0%,rgba(229,231,235,0.20),transparent_42%),linear-gradient(135deg,rgba(35,78,180,0.22),rgba(255,255,255,0.04))] blur-2xl" />
-
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.08] p-3 shadow-2xl shadow-black/45 backdrop-blur-xl">
-        <div className="relative overflow-hidden rounded-[1.55rem] bg-[#060B1B] text-white">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#2D5FDC]/25 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-
-          <div className="relative border-b border-white/10 px-5 py-5">
-            <div className="flex min-w-0 items-center gap-4">
-              <LogoBox tamanho="lg" />
-
-              <div className="min-w-0">
-                <p className="text-[10px] font-black uppercase tracking-[0.32em] text-blue-100">
-                  CEO Club Mentoria
-                </p>
-
-                <h3 className="mt-2 max-w-xl break-words text-[clamp(1.55rem,2vw,2.2rem)] font-black leading-tight tracking-[-0.03em] text-white">
-                  Uma jornada prática para liderar com clareza.
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative p-5">
-            <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.06] p-5 shadow-[inset_0_0_45px_rgba(35,78,180,0.16)]">
-              <p className="text-xs font-black uppercase tracking-[0.26em] text-[#BFC7D5]">
-                Você evolui em
-              </p>
-
-              <div className="mt-4 grid gap-3">
-                {highlights.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 shadow-[inset_0_0_20px_rgba(255,255,255,0.03)]"
-                  >
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E5E7EB] text-xs font-black text-[#050A18]">
-                      ✓
-                    </span>
-
-                    <span className="break-words text-sm font-black text-white">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.08] p-4">
-                <p className="text-xs font-bold text-[#BFC7D5]">Foco</p>
-                <h4 className="mt-1 text-lg font-black text-white">
-                  Resultado
-                </h4>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-white/[0.08] p-4">
-                <p className="text-xs font-bold text-[#BFC7D5]">Método</p>
-                <h4 className="mt-1 text-lg font-black text-white">
-                  Execução
-                </h4>
-              </div>
-            </div>
-
-            <a
-              href="#contato"
-              className="mt-4 flex w-full items-center justify-center rounded-2xl bg-[#E5E7EB] px-6 py-3 text-sm font-black text-[#050A18] shadow-xl shadow-black/30 transition hover:bg-white"
-            >
-              Pedir para conhecer
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute -bottom-5 left-6 hidden rounded-2xl border border-white/10 bg-white/10 px-5 py-3 text-xs font-bold text-[#D8DDE6] backdrop-blur-xl lg:block">
-        Acesso exclusivo para mentorados.
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section
-  id="sobre"
-  className="relative overflow-hidden bg-[#081326] px-4 py-16 sm:px-6 lg:px-8"
->
-  <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#173B8F]/20 blur-3xl" />
-  <div className="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-white/8 blur-3xl" />
-
-  <div className="relative mx-auto max-w-[1240px]">
-    <div className="mx-auto max-w-4xl text-center">
-      <p className="text-xs font-black uppercase tracking-[0.32em] text-[#BFC7D5]">
-        Sobre a mentoria
-      </p>
-
-      <h2 className="mt-4 text-[clamp(2rem,3.2vw,3.7rem)] font-black leading-tight tracking-[-0.04em] text-white">
-        Você aprende a conduzir a clínica com direção, não só consumir conteúdo.
-      </h2>
-
-      <p className="mx-auto mt-5 max-w-3xl text-sm font-semibold leading-7 text-[#D8DDE6] sm:text-base">
-        No CEO Club, você começa pelo que gera resultado mais rápido: venda,
-        avaliação, agendamento e experiência do paciente. Depois, estrutura
-        posicionamento, comunicação, financeiro, equipe, processos e escala.
-      </p>
-    </div>
-
-    <div className="mt-10 grid gap-4 lg:grid-cols-3">
-      {areas.map((area, index) => (
-        <article
-          key={area.titulo}
-          className="group relative min-w-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-5 shadow-[0_22px_55px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:bg-white/[0.08]"
-        >
-          <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-white/10 blur-2xl transition group-hover:bg-[#2D5FDC]/20" />
-
-          <div className="relative">
-            <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E5E7EB] text-sm font-black text-[#050A18] shadow-[0_0_28px_rgba(45,95,220,0.18)]">
-              {String(index + 1).padStart(2, "0")}
-            </div>
-
-            <h3 className="break-words text-lg font-black leading-tight text-white sm:text-xl">
-              {area.titulo}
-            </h3>
-
-            <p className="mt-3 break-words text-sm font-medium leading-7 text-[#D8DDE6]">
-              {area.texto}
+      <section className="border-y border-white/10 bg-white/[0.03] py-6">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 md:grid-cols-3">
+          <div>
+            <p className="text-3xl font-semibold">12 meses</p>
+            <p className="mt-1 text-sm text-white/60">
+              de jornada estratégica e acompanhamento
             </p>
           </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
 
-      <section
-  id="contato"
-  className="relative overflow-hidden bg-[#050A18] px-4 py-16 sm:px-6 lg:px-8"
->
-  <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[#173B8F]/25 blur-3xl" />
-
-  <div className="relative mx-auto max-w-[1120px]">
-    <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.07] p-2 shadow-2xl shadow-black/25 backdrop-blur">
-      <div className="relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent p-6 sm:p-8 lg:p-10">
-        <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-[#2D5FDC]/20 blur-3xl" />
-
-        <div className="relative mx-auto max-w-3xl text-center">
-          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center overflow-hidden rounded-[20px] bg-[#050A18] p-1 shadow-[0_0_34px_rgba(45,95,220,0.35)] ring-1 ring-white/10">
-            <img
-              src={logoSrc}
-              alt="Logo CEO Club"
-              className="h-full w-full rounded-2xl object-cover"
-            />
+          <div>
+            <p className="text-3xl font-semibold">Método</p>
+            <p className="mt-1 text-sm text-white/60">
+              para vendas, agenda, gestão e liderança
+            </p>
           </div>
 
-          <p className="text-xs font-black uppercase tracking-[0.32em] text-[#BFC7D5]">
-            Próximo passo
-          </p>
+          <div>
+            <p className="text-3xl font-semibold">Plataforma</p>
+            <p className="mt-1 text-sm text-white/60">
+              com módulos, tarefas, simulados e evolução
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <h2 className="mt-4 text-[clamp(2rem,3vw,3.4rem)] font-black leading-tight tracking-[-0.04em] text-white">
-            Quer entender se o CEO Club faz sentido para sua clínica?
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-white/40">
+            O que é o CEO Club
+          </span>
+
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">
+            Uma mentoria para transformar rotina clínica em direção estratégica.
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm font-semibold leading-7 text-[#D8DDE6] sm:text-base">
-            Solicite contato e veja como a mentoria pode ajudar você a vender
-            com mais clareza, organizar a gestão e construir uma rotina de CEO
-            dentro da sua clínica.
+          <p className="mt-6 text-lg leading-8 text-white/70">
+            O CEO Club foi criado para dentistas e profissionais da saúde que
+            desejam sair do improviso e conduzir suas clínicas com mais clareza,
+            método e visão de crescimento.
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href="https://wa.me/5515988401441"
-              className="inline-flex w-full items-center justify-center rounded-full bg-[#E5E7EB] px-8 py-4 text-sm font-black text-[#050A18] shadow-xl shadow-black/25 transition hover:bg-white sm:w-auto"
-            >
-              Quero conhecer a mentoria
-            </a>
+          <p className="mt-4 text-lg leading-8 text-white/70">
+            A jornada conecta vendas, agenda, equipe, experiência do paciente e
+            gestão, ajudando o profissional a tomar decisões melhores e
+            construir uma clínica mais organizada, previsível e forte.
+          </p>
+        </div>
 
-            <a
-              href="https://ceoclubmentoria.com.br/login"
-              className="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-8 py-4 text-sm font-black text-white transition hover:bg-white hover:text-[#050A18] sm:w-auto"
-            >
-              Já sou aluno
-            </a>
+        <DraImageCard
+          src="/images/dra-blazer.png"
+          alt="Dra. Luciana Rocha"
+        />
+      </section>
+
+      <section className="bg-white/[0.03] py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-3xl">
+            <span className="text-sm font-semibold uppercase tracking-[0.3em] text-white/40">
+              Dentro da mentoria
+            </span>
+
+            <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">
+              Uma jornada para organizar a clínica, conduzir melhor o paciente e
+              crescer com método.
+            </h2>
+
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+              Cada pilar foi pensado para levar clareza para áreas que impactam
+              diretamente o crescimento da clínica: vendas, agenda, equipe,
+              experiência, processos e gestão.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {pillars.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-3xl border border-white/10 bg-[#07111f] p-6 transition hover:-translate-y-1 hover:bg-white/[0.04]"
+              >
+                <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-sm">
+                  ✦
+                </div>
+
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+
+                <p className="mt-3 text-sm leading-6 text-white/60">
+                  {item.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-      <footer className="relative border-t border-white/10 bg-[#050A18] px-4 py-7 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-4 text-sm text-[#D8DDE6] md:flex-row md:items-center">
-          <p>© 2026 CEO Club Mentoria. Todos os direitos reservados.</p>
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-[0.95fr_1.05fr]">
+        <div className="order-2 md:order-1">
+          <DraImageCard
+            src="/images/dra-retrato.png"
+            alt="Retrato da Dra. Luciana Rocha"
+          />
+        </div>
 
-          <div className="flex flex-wrap gap-5">
-            <a href="#sobre" className="transition hover:text-white">
-              Sobre
-            </a>
+        <div className="order-1 md:order-2">
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-white/40">
+            A mentora
+          </span>
 
-            <a href="#contato" className="transition hover:text-white">
-              Contato
-            </a>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">
+            Por trás do método, existe vivência real de clínica.
+          </h2>
 
-            <a
-              href="https://ceoclubmentoria.com.br/login"
-              className="transition hover:text-white"
+          <p className="mt-6 text-lg leading-8 text-white/70">
+            A Dra. Luciana Rocha desenvolveu o CEO Club para guiar dentistas e
+            profissionais da saúde que desejam crescer com mais clareza,
+            posicionamento e gestão.
+          </p>
+
+          <p className="mt-4 text-lg leading-8 text-white/70">
+            A mentoria nasce da prática, da rotina clínica e da necessidade de
+            transformar atendimento em experiência, equipe em cultura e clínica
+            em negócio.
+          </p>
+
+          <Link
+            href="/sobre"
+            className="mt-8 inline-flex rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Conhecer a trajetória
+          </Link>
+        </div>
+      </section>
+
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-white px-8 py-14 text-center text-[#07111f] md:px-16">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#07111f]/50">
+            CEO Club
+          </p>
+
+          <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
+            A clínica cresce quando quem está à frente deixa de apagar
+            incêndios e começa a liderar com método.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#07111f]/70">
+            Uma jornada para dentistas e profissionais da saúde que querem
+            organizar processos, vender melhor, fortalecer a equipe e conduzir a
+            clínica com visão de crescimento.
+          </p>
+
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href="/mentoria"
+              className="rounded-full bg-[#07111f] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#0c1d34]"
+            >
+              Ver como funciona
+            </Link>
+
+            <Link
+              href="/login"
+              className="rounded-full border border-[#07111f]/20 px-7 py-3 text-sm font-semibold text-[#07111f] transition hover:bg-[#07111f]/5"
             >
               Área do Aluno
-            </a>
+            </Link>
           </div>
         </div>
-      </footer>
+      </section>
+
+      <Footer />
     </main>
   );
 }
