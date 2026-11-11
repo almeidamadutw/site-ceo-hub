@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CEO Club | Site institucional
 
-## Getting Started
+Site público de apresentação da mentoria CEO Club. **Não é a plataforma autenticada de mentorados** (mantida separadamente no repositório `co-hub`).
 
-First, run the development server:
+## Documentação viva
+
+Consulte [docs/README.md](docs/README.md) para visão geral, páginas, arquitetura, fluxos, operação, pendências e histórico de alterações. A documentação está versionada com o código e deve ser atualizada a cada mudança relevante.
+
+## Stack e execução
+
+Next.js 16, React 19, TypeScript e Tailwind CSS.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O ambiente de desenvolvimento usa `http://localhost:3000`. O build local não atesta publicação em produção.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.tsx`: página inicial;
+- `app/mentoria/page.tsx`: explicação do programa;
+- `app/sobre/page.tsx`: apresentação da mentora;
+- `app/contato/page.tsx`: canais de contato;
+- `components/`: seções e componentes visuais;
+- `app/robots.ts` e `app/sitemap.ts`: configurações de indexação;
+- `docs/`: documentação funcional e técnica.
 
-## Learn More
+**Atenção:** o cabeçalho e a home usam um link para `/login`, mas essa rota não foi localizada neste repositório. Confirmar o destino da plataforma antes de divulgar o acesso. Veja [pendências](docs/08-pendencias.md).
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Dados sensíveis e segredos não devem ser enviados para o GitHub.
